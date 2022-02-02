@@ -61,7 +61,12 @@ public class Activity1 {
     * @return the temperature
     */
    public static double getTempF(String id) {
-	   return Integer.MIN_VALUE;
+	   DataSource ds = DataSource.connect("http://weather.gov/xml/current_obs/" + id + ".xml");
+		  ds.setCacheTimeout(15 * 60);
+		  ds.load();
+    //ds.printUsageString();
+    double temp = ds.fetchFloat("temp_f");
+	   return temp;
    }
    /**
     * Returns a concise forecast for the specified weather station id
@@ -69,6 +74,13 @@ public class Activity1 {
     * @return a concise forecast 
     */
    public static String getConciseForecast(String id) {
-	   return null;
+	   Activity1.avoidSSLError();
+	   DataSource ds = DataSource.connect("http://weather.gov/xml/current_obs/" + id + ".xml");
+		  ds.setCacheTimeout(15 * 60);
+		  ds.load();
+       //ds.printUsageString();
+       double temp = ds.fetchFloat("temp_f");
+       String loc = ds.fetchString("location");
+	   return "The temperature at " + loc + " is " + temp + "F";
    }
 }
