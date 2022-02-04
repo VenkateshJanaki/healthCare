@@ -54,6 +54,7 @@ class Activity2Test {
 	@Test
 	void testToString3of4() {
 		Observation ob = new Observation("KSEA","Light Rain",38.0,170,10.0,997.6,89);
+		System.out.println(ob.toString());
 		assertEquals("KSEA: 38.0 degrees; Light Rain (wind: 10.0 knots @ 170 degrees); barometric pressure: 997.6; relativity humidity: 89",ob.toString());
 	}
 	@Test
@@ -174,7 +175,7 @@ class Activity2Test {
 		// Boston is the windiest big city in the US.
 		// International Falls, MN is typically the coldest in the US in winter
 		Observation obIntFalls = new Observation("KINL","Overcast with Haze",-24.0, 330);
-		assertTrue(obIntFalls.colderThan(obBOSLong));
+			assertTrue(obIntFalls.colderThan(obBOSLong));
 
 	}
 }

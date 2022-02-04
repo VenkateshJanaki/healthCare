@@ -3,7 +3,11 @@
 */
 
 public class WeatherStation {
-   
+   private String name; 
+   private String id; 
+   private String state; 
+   private double lat; 
+   private double lng; 
    /**
     * Constructor 
     * @param name The name of the station
@@ -13,6 +17,11 @@ public class WeatherStation {
     * @param lng longitude of this station
     */
    public WeatherStation(String name, String id, String state, double lat, double lng) {
+	   this.name = name; 
+	   this.id = id; 
+	   this.state = state; 
+	   this.lat = lat; 
+	   this.lng = lng; 
     }
    
   /**
@@ -20,7 +29,7 @@ public class WeatherStation {
    * @return the ID of the weather station
    */
    public String getId() { 
-      return null;
+      return id; 
    }
    
    /**
@@ -28,7 +37,7 @@ public class WeatherStation {
     * @return the name of this station
     */
    public String getName() { 
-      return null;
+      return name; 
    }
    
    /**
@@ -37,7 +46,12 @@ public class WeatherStation {
     * @return true if this weather station is in state; otherwise false
     */
    public boolean isLocatedInState(String state) {
-      return false;
+	   if(this.state.equals(state)) {
+		   return true; 
+	   }
+	   else {
+		   return false; 
+	   }
    }
    
 }

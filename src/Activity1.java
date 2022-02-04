@@ -14,6 +14,8 @@ public class Activity1 {
 		  ds.setCacheTimeout(15 * 60);
 		  System.out.println(getConciseForecast(stationID));
           ds.load();
+         // ds.printUsageString();
+
           //ds.printUsageString();
           double temp = ds.fetchFloat("temp_f");
           String loc = ds.fetchString("location");
@@ -61,11 +63,12 @@ public class Activity1 {
     * @return the temperature
     */
    public static double getTempF(String id) {
+	   Activity1.avoidSSLError();
 	   DataSource ds = DataSource.connect("http://weather.gov/xml/current_obs/" + id + ".xml");
 		  ds.setCacheTimeout(15 * 60);
 		  ds.load();
     //ds.printUsageString();
-    double temp = ds.fetchFloat("temp_f");
+	   double temp = ds.fetchFloat("temp_f");
 	   return temp;
    }
    /**

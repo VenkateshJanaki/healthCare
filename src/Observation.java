@@ -1,7 +1,14 @@
 
 public class Observation{
 	//instance data
-	
+	private String id; 
+	private String description; 
+	private double temp; 
+	private int windDir; 
+	private boolean isLongD;
+	private double pressure; 
+	private int humidity;
+	private double windSpeed;
 	
 	/**
 	 * Constructs an Observation object with the specified parameters and sets
@@ -13,9 +20,13 @@ public class Observation{
 	 * @param windDir wind direction in degrees
 	 */
 	public Observation(String id, String description, double temp, int windDir) {
-		
-		
-	}
+		this.id = id; 
+		this.description = description; 
+		this.temp = temp; 
+		this.windDir = windDir; 
+		isLongD = false; 
+		}
+
 	
 	/**
 	 * Constructs an Observation object with the specified parameters.
@@ -29,15 +40,29 @@ public class Observation{
 	 * @param humidity relative humidity
 	 */
 	public Observation(String id, String description, double temp, int windDir, double windSpeed, double pressure, int humidity) {
-	
+		this.id = id; 
+		this.description = description; 
+		this.temp = temp; 
+		this.windDir = windDir; 
+		this.pressure = pressure; 
+		this.windSpeed = windSpeed; 
+		this.humidity = humidity; 
+		isLongD = true; 
 	
 	}
+	
+	
 	
 	/**
 	 * @return a String representing this observation
 	 */
 	public String toString() {
-		return null;
+		if(isLongD == true) {
+			return((id + ": " + temp + " degrees; " + description + " (wind: " + windSpeed + " knots @ " + windDir + " degrees);"+ " barometric pressure"+ ": " +pressure + "; " + "relativity humidity: " + humidity)); 
+		}
+		else {
+			return (id + ": " + temp + " degrees; " + description + " (wind: " + windDir + " degrees)");
+		}
 		
 	}
 	
@@ -47,7 +72,12 @@ public class Observation{
 	 * @return true if this observation's temperature is colder than other; otherwise false.
 	 */
 	public boolean colderThan(Observation other) {
-		return false;
+		if(this.temp > other.temp) {
+			return false; 
+		}
+		else {
+			return true; 
+		}
 	}
 	
 	/**
@@ -56,7 +86,45 @@ public class Observation{
 	 * For more details, see https://en.wikipedia.org/wiki/Beaufort_scale
 	 */
 	public int getBeaufortNumber() {
-		return -1;
+		if(windSpeed < 1) {
+			return 0; 
+		}
+		else if(windSpeed>=1 && windSpeed <=3) {
+			return 1; 
+		}
+		else if(windSpeed >=4 && windSpeed<=6) {
+			return 2; 
+		}
+		else if(windSpeed>=7 && windSpeed <=10) {
+			return 3; 
+		}
+		else if(windSpeed >=11 && windSpeed <=16) {
+			return 4; 
+		}
+		else if(windSpeed >=17 && windSpeed <=21) {
+			return 5; 
+		}
+		else if (windSpeed >=22 && windSpeed<=27) {
+			return 6; 
+		}
+		else if(windSpeed >=28 && windSpeed <=33) {
+			return 7; 
+		}
+		else if(windSpeed >=34 && windSpeed <=40) {
+			return 8; 
+		}
+		else if(windSpeed >= 41 && windSpeed <= 47) {
+			return 9; 
+		}
+		else if(windSpeed >=48 && windSpeed <=55) {
+			return 10; 
+		}
+		else if(windSpeed >=56 && windSpeed <=63) {
+			return 11; 
+		}
+		else {
+			return 12; 
+		}
 	}
 	
 	   /**
@@ -65,21 +133,35 @@ public class Observation{
 	    * @return a string representation of the wind conditions
 	    */
 	   public String getWindConditions() {
-		   return null;
+		  int bNum = getBeaufortNumber(); 
+		  if(bNum <=2) {
+			  return "Wind is calm"; 
+		  }
+		  else if (bNum >=3 && bNum <= 5) {
+			  return "Nice breeze today"; 
+
+		  }
+		  else if (bNum >=6 && bNum <= 9) {
+			  return "Wind flags are out"; 
+
+		  }
+		  else {
+			  return "Storm is coming"; 
+		  }
 	   }
 	/**
 	 * Gets the weather station ID
 	 * @return the weather station id
 	 */
 	public String getId() {
-		return null;
+		return id; 
 	}
 
 	/**
 	 * @return the temp
 	 */
 	public double getTemp() {
-		return Integer.MIN_VALUE;
+		return temp; 
 	}
 
 }
