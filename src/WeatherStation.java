@@ -40,6 +40,10 @@ public class WeatherStation {
       return name; 
    }
    
+   public String getState() { 
+	      return state; 
+	   }
+	   
    /**
     * Determines if this weather station is located in the specified state
     * @param state the state
