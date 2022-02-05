@@ -167,7 +167,7 @@ public class WeatherBureau {
 		int index;
 		int sortedIndex;
 		WeatherStation newValue; 
-		System.out.println("Length " + arr.length);
+		//System.out.println("Length " + arr.length);
 		for(index = 1; index < arr.length; index++) {
 			newValue = arr[index]; 
 			String stateName = newValue.getName(); 
@@ -179,8 +179,8 @@ public class WeatherBureau {
 				temp = arr[sortedIndex-1];
 				NameTemp = temp.getName(); 
 				sortedIndex--; 
-				System.out.println(stateName + " ---- " + NameTemp);
-				System.out.println(sortedIndex);
+				//System.out.println(stateName + " ---- " + NameTemp);
+				//System.out.println(sortedIndex);
 				
 			}
 			arr[sortedIndex] = newValue; 
