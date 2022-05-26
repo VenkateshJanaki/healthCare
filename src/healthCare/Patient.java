@@ -4,16 +4,16 @@ public class Patient
 	private String name;
 	private int ID;
 	private int age;
-	private String severity;
+	private int severity;
 	private String reason;
 	
-	public Patient(String n, int a, String s, String r)
+	public Patient(String n, int i, int a, int s, String r)
 	{
 		name = n;
 		age = a;
 		severity = s;
 		reason = r;
-		ID = (int) (Math.random() * 10000);
+		ID = i;
 	}
 	
 	public String returnName()
@@ -31,7 +31,7 @@ public class Patient
 		return age;
 	}
 	
-	public String returnSeverity()
+	public int returnSeverity()
 	{
 		return severity;
 	}

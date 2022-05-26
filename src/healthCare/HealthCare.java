@@ -18,21 +18,21 @@ public class HealthCare
 		System.out.println("");
 		
 		System.out.println("Enter age of patient: ");
-		int inputAge = scanner.nextInt();
+		String temp = scanner.nextLine();
+		int inputAge = Integer.parseInt(temp);
 		//System.out.println(inputAge);
 		System.out.println("");
 		
 		System.out.println("Enter reason of hospitalization: ");
-		String inputReason = "stomach ache";
-		//String inputReason = scanner.nextLine();
+		String inputReason = scanner.nextLine();
 		//System.out.println(inputReason);
 		System.out.println("");
 		
 		int inputID = (int)(Math.random() * 10000);
-		int inputSeverity = (int)(Math.random() * 4);
+		int inputSeverity = (int)(Math.random() * 4); 
 		//System.out.println(inputID + inputSeverity);
 		
-		//addPatient(inputName, inputID, inputAge, inputSeverity, inputReason);
+		addPatient(inputName, inputID, inputAge, inputSeverity, inputReason);
 		
 		System.out.println("Patient " + inputName + ", " 
 							+ "age " + inputAge + ", "
@@ -43,9 +43,10 @@ public class HealthCare
 		
 	}
 	
-	/*public static void addPatient(String n, int i, int a, int s, String r)
+	public static void addPatient(String n, int i, int a, int s, String r)
 	{
 		Patient newPatient = new Patient(n, i, a, s, r);
 		patientList.add(newPatient);
-	}*/
+	}
+	
 }
